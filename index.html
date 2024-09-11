@@ -66,12 +66,11 @@
 </head>
 
 <body class="bg-[#141414] flex items-center justify-center h-screen px-2">
-  <div class="card bg-[#1f1f1f] rounded-lg px-6 py-12 max-w-96 text-center">
-    <img role="user_avatar" src="assets/images/avatar-jessica.jpeg" alt="Profile Picture"
-      class="rounded-full w-24 h-24 mx-auto mb-4">
-    <h1 role="name" class="text-white text-2xl font-semibold mb-1">Jessica Randall</h2>
-      <p role="location" class="text-lime-400 text-sm font-semibold mb-2">London, United Kingdom</p>
-      <p role="description" class="text-white/70 text-sm my-4">"Front-end developer and avid reader."</p>
+  <main class="card bg-[#1f1f1f] rounded-lg px-6 py-12 max-w-96 text-center">
+    <img src="assets/images/avatar-jessica.jpeg" alt="Profile Picture" class="rounded-full w-24 h-24 mx-auto mb-4">
+    <h1 class="text-white text-2xl font-semibold mb-1">Jessica Randall</h2>
+      <p class="text-lime-400 text-sm font-semibold mb-2">London, United Kingdom</p>
+      <p class="text-white/70 text-sm my-4">"Front-end developer and avid reader."</p>
 
       <button
         class="button bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg w-full mb-3">
@@ -97,110 +96,110 @@
         class="button bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg w-full">
         Instagram
       </button>
-  </div>
+      </div>
 
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
+      <script>
+        gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to('.card', {
-      opacity: 1,
-      y: 0,
-      rotation: 0,
-      duration: 1.5,
-      ease: 'elastic.out(1, 0.5)',
-      boxShadow: '0 0 30px rgba(197, 248, 42, 0.5)',
-    });
-
-    gsap.from('img', {
-      scale: 0,
-      rotation: 720,
-      duration: 2,
-      delay: 0.5,
-      ease: 'elastic.out(1, 0.3)'
-    });
-
-    gsap.from('h2', {
-      opacity: 0,
-      scale: 1.5,
-      duration: 1,
-      delay: 1.5,
-      ease: 'power4.out'
-    });
-
-    gsap.from('p', {
-      opacity: 0,
-      y: 50,
-      stagger: 0.2,
-      duration: 0.8,
-      delay: 2,
-      ease: 'back.out(1.7)'
-    });
-
-    gsap.from('.button', {
-      opacity: 0,
-      scale: 0,
-      stagger: 0.1,
-      duration: 0.5,
-      delay: 2.5,
-      y: 50,
-      ease: 'back.out(1.7)',
-      onComplete: () => {
-        gsap.to('.button', {
+        gsap.to('.card', {
           opacity: 1,
-          scale: 1,
           y: 0,
+          rotation: 0,
+          duration: 1.5,
+          ease: 'elastic.out(1, 0.5)',
+          boxShadow: '0 0 30px rgba(197, 248, 42, 0.5)',
+        });
+
+        gsap.from('img', {
+          scale: 0,
+          rotation: 720,
+          duration: 2,
+          delay: 0.5,
+          ease: 'elastic.out(1, 0.3)'
+        });
+
+        gsap.from('h2', {
+          opacity: 0,
+          scale: 1.5,
+          duration: 1,
+          delay: 1.5,
+          ease: 'power4.out'
+        });
+
+        gsap.from('p', {
+          opacity: 0,
+          y: 50,
+          stagger: 0.2,
+          duration: 0.8,
+          delay: 2,
+          ease: 'back.out(1.7)'
+        });
+
+        gsap.from('.button', {
+          opacity: 0,
+          scale: 0,
           stagger: 0.1,
-          duration: 0.3,
-          ease: 'power2.out'
+          duration: 0.5,
+          delay: 2.5,
+          y: 50,
+          ease: 'back.out(1.7)',
+          onComplete: () => {
+            gsap.to('.button', {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              stagger: 0.1,
+              duration: 0.3,
+              ease: 'power2.out'
+            });
+          }
         });
-      }
-    });
 
-    const buttons = document.querySelectorAll('.button');
-    buttons.forEach(button => {
-      button.addEventListener('mouseenter', () => {
-        gsap.to(button, {
-          scale: 1.1,
-          duration: 0.3,
-          ease: 'power2.out'
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => {
+          button.addEventListener('mouseenter', () => {
+            gsap.to(button, {
+              scale: 1.1,
+              duration: 0.3,
+              ease: 'power2.out'
+            });
+            button.classList.add('glowing');
+          });
+          button.addEventListener('mouseleave', () => {
+            gsap.to(button, {
+              scale: 1,
+              duration: 0.3,
+              ease: 'power2.in'
+            });
+            button.classList.remove('glowing');
+          });
         });
-        button.classList.add('glowing');
-      });
-      button.addEventListener('mouseleave', () => {
-        gsap.to(button, {
-          scale: 1,
-          duration: 0.3,
-          ease: 'power2.in'
+
+        gsap.to('.card', {
+          y: '-5px',
+          duration: 1.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut'
         });
-        button.classList.remove('glowing');
-      });
-    });
 
-    gsap.to('.card', {
-      y: '-5px',
-      duration: 1.5,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut'
-    });
+        gsap.to('img', {
+          rotation: 360,
+          duration: 20,
+          repeat: -1,
+          ease: 'none'
+        });
 
-    gsap.to('img', {
-      rotation: 360,
-      duration: 20,
-      repeat: -1,
-      ease: 'none'
-    });
-
-    gsap.to('.card', {
-      y: '100px',
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: true
-      }
-    });
-  </script>
+        gsap.to('.card', {
+          y: '100px',
+          scrollTrigger: {
+            trigger: 'body',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true
+          }
+        });
+      </script>
 </body>
 
 </html>
