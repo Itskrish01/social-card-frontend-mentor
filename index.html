@@ -17,7 +17,7 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .card {
@@ -26,13 +26,15 @@
       box-shadow: 0 0 0 rgba(197, 248, 42, 0);
     }
 
-    .button {
+    .social-link {
       transition: transform 0.3s ease;
       position: relative;
       overflow: hidden;
+      display: block;
+      text-decoration: none;
     }
 
-    .button::after {
+    .social-link::after {
       content: '';
       position: absolute;
       top: -50%;
@@ -44,7 +46,7 @@
       transition: all 0.3s ease;
     }
 
-    .button:hover::after {
+    .social-link:hover::after {
       top: -100%;
       left: -100%;
     }
@@ -65,141 +67,153 @@
   </style>
 </head>
 
-<body class="bg-[#141414] flex items-center justify-center h-screen px-2">
-  <main class="card bg-[#1f1f1f] rounded-lg px-6 py-12 max-w-96 text-center">
-    <img src="assets/images/avatar-jessica.jpeg" alt="Profile Picture" class="rounded-full w-24 h-24 mx-auto mb-4">
-    <h1 class="text-white text-2xl font-semibold mb-1">Jessica Randall</h2>
-      <p class="text-lime-400 text-sm font-semibold mb-2">London, United Kingdom</p>
-      <p class="text-white/70 text-sm my-4">"Front-end developer and avid reader."</p>
+<body class="bg-[#141414] flex items-center justify-center min-h-screen p-4">
+  <main
+    class="card bg-[#1f1f1f] rounded-lg px-4 sm:px-6 py-8 sm:py-12 w-full max-w-[20rem] sm:max-w-[24rem] text-center">
+    <img src="assets/images/avatar-jessica.jpeg" alt="Profile Picture of Jessica Randall"
+      class="rounded-full w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4">
+    <h1 class="text-white text-xl sm:text-2xl font-semibold mb-1">Jessica Randall</h1>
+    <p class="text-lime-400 text-sm font-semibold mb-2">London, United Kingdom</p>
+    <p class="text-white/70 text-sm my-4">"Front-end developer and avid reader."</p>
 
-      <button
-        class="button bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg w-full mb-3">
-        GitHub
-      </button>
+    <nav aria-label="Social media links">
+      <ul class="list-none p-0">
+        <li class="mb-3">
+          <a href="#"
+            class="social-link bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg block w-full">
+            GitHub
+          </a>
+        </li>
+        <li class="mb-3">
+          <a href="#"
+            class="social-link bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg block w-full">
+            Frontend Mentor
+          </a>
+        </li>
+        <li class="mb-3">
+          <a href="#"
+            class="social-link bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg block w-full">
+            LinkedIn
+          </a>
+        </li>
+        <li class="mb-3">
+          <a href="#"
+            class="social-link bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg block w-full">
+            Twitter
+          </a>
+        </li>
+        <li>
+          <a href="#"
+            class="social-link bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg block w-full">
+            Instagram
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </main>
 
-      <button
-        class="button bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg w-full mb-3">
-        Frontend Mentor
-      </button>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
 
-      <button
-        class="button bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg w-full mb-3">
-        LinkedIn
-      </button>
+    gsap.to('.card', {
+      opacity: 1,
+      y: 0,
+      rotation: 0,
+      duration: 1.5,
+      ease: 'elastic.out(1, 0.5)',
+      boxShadow: '0 0 30px rgba(197, 248, 42, 0.5)',
+    });
 
-      <button
-        class="button bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg w-full mb-3">
-        Twitter
-      </button>
+    gsap.from('img', {
+      scale: 0,
+      rotation: 720,
+      duration: 2,
+      delay: 0.5,
+      ease: 'elastic.out(1, 0.3)'
+    });
 
-      <button
-        class="button bg-[#333333] text-[14px] hover:bg-[#c5f82a] hover:text-[#333333] text-white font-semibold py-2 px-4 rounded-lg w-full">
-        Instagram
-      </button>
-      </div>
+    gsap.from('h1', {
+      opacity: 0,
+      scale: 1.5,
+      duration: 1,
+      delay: 1.5,
+      ease: 'power4.out'
+    });
 
-      <script>
-        gsap.registerPlugin(ScrollTrigger);
+    gsap.from('p', {
+      opacity: 0,
+      y: 50,
+      stagger: 0.2,
+      duration: 0.8,
+      delay: 2,
+      ease: 'back.out(1.7)'
+    });
 
-        gsap.to('.card', {
+    gsap.from('.social-link', {
+      opacity: 0,
+      scale: 0,
+      stagger: 0.1,
+      duration: 0.5,
+      delay: 2.5,
+      y: 50,
+      ease: 'back.out(1.7)',
+      onComplete: () => {
+        gsap.to('.social-link', {
           opacity: 1,
+          scale: 1,
           y: 0,
-          rotation: 0,
-          duration: 1.5,
-          ease: 'elastic.out(1, 0.5)',
-          boxShadow: '0 0 30px rgba(197, 248, 42, 0.5)',
-        });
-
-        gsap.from('img', {
-          scale: 0,
-          rotation: 720,
-          duration: 2,
-          delay: 0.5,
-          ease: 'elastic.out(1, 0.3)'
-        });
-
-        gsap.from('h2', {
-          opacity: 0,
-          scale: 1.5,
-          duration: 1,
-          delay: 1.5,
-          ease: 'power4.out'
-        });
-
-        gsap.from('p', {
-          opacity: 0,
-          y: 50,
-          stagger: 0.2,
-          duration: 0.8,
-          delay: 2,
-          ease: 'back.out(1.7)'
-        });
-
-        gsap.from('.button', {
-          opacity: 0,
-          scale: 0,
           stagger: 0.1,
-          duration: 0.5,
-          delay: 2.5,
-          y: 50,
-          ease: 'back.out(1.7)',
-          onComplete: () => {
-            gsap.to('.button', {
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              stagger: 0.1,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          }
+          duration: 0.3,
+          ease: 'power2.out'
         });
+      }
+    });
 
-        const buttons = document.querySelectorAll('.button');
-        buttons.forEach(button => {
-          button.addEventListener('mouseenter', () => {
-            gsap.to(button, {
-              scale: 1.1,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-            button.classList.add('glowing');
-          });
-          button.addEventListener('mouseleave', () => {
-            gsap.to(button, {
-              scale: 1,
-              duration: 0.3,
-              ease: 'power2.in'
-            });
-            button.classList.remove('glowing');
-          });
+    const links = document.querySelectorAll('.social-link');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        gsap.to(link, {
+          scale: 1.1,
+          duration: 0.3,
+          ease: 'power2.out'
         });
+        link.classList.add('glowing');
+      });
+      link.addEventListener('mouseleave', () => {
+        gsap.to(link, {
+          scale: 1,
+          duration: 0.3,
+          ease: 'power2.in'
+        });
+        link.classList.remove('glowing');
+      });
+    });
 
-        gsap.to('.card', {
-          y: '-5px',
-          duration: 1.5,
-          repeat: -1,
-          yoyo: true,
-          ease: 'power1.inOut'
-        });
+    gsap.to('.card', {
+      y: '-5px',
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut'
+    });
 
-        gsap.to('img', {
-          rotation: 360,
-          duration: 20,
-          repeat: -1,
-          ease: 'none'
-        });
+    gsap.to('img', {
+      rotation: 360,
+      duration: 20,
+      repeat: -1,
+      ease: 'none'
+    });
 
-        gsap.to('.card', {
-          y: '100px',
-          scrollTrigger: {
-            trigger: 'body',
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: true
-          }
-        });
-      </script>
+    gsap.to('.card', {
+      y: '100px',
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true
+      }
+    });
+  </script>
 </body>
 
 </html>
